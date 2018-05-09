@@ -48,8 +48,9 @@ public class WanderState : FSMState {
         {
             int areaNumber = Random.Range(0, wanderPoints.Length);
             wanderPoint = wanderPoints[areaNumber];
+            Nma.SetDestination(wanderPoint.transform.position);
         }
-        Nma.SetDestination(wanderPoint.transform.position);
+        
 
         float distance = Vector3.Distance(wanderPoint.transform.position, npc.transform.position);
 

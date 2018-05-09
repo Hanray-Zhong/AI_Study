@@ -17,7 +17,7 @@ public class StateController : FSMSystem {
         Init();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         FSM.DoUpdate();
     }
