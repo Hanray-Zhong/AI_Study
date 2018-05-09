@@ -1,0 +1,8 @@
+#需要过滤的文件夹目录
+Test_1/.vs/
+Test_1/Library/
+Test_1/UnityPackageManager/
+
+#需要过滤的文件
+*.csproj
+*.sln
