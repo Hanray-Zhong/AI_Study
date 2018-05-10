@@ -41,9 +41,9 @@ public class MoveToState : FSMState {
 
     public override Transition CheckTranstition()
     {
-        float distance = Vector3.Distance(target.transform.position, npc.transform.position);
+        //float distance = Vector3.Distance(target.transform.position, npc.transform.position);
         
-
+        /*
         if (target.layer == 1 << LayerMask.NameToLayer("AI"))
         {
             shootDistinction = target.transform.position - npc.transform.position;
@@ -60,6 +60,7 @@ public class MoveToState : FSMState {
         {
             return Transition.LostEnemy;
         }
+        */
 
         return Transition.NullTransition;
     }

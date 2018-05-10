@@ -4,10 +4,9 @@ using UnityEngine;
 
 
 
-public class AI : Unit {
+public class AI : MonoBehaviour {
 
     public Weapon weapon;
-    public float RateOfFire;
     public float ProjectileSpeed;
     public float ShootCD = 0;
 
@@ -57,7 +56,6 @@ public class AI : Unit {
         Weapon weapon = gameObject.GetComponent<Weapon>();
         weapon.ChooseWeapon(weaponID);
 
-        RateOfFire = weapon.RateOfFire;
         ProjectileSpeed = weapon.ProjectileSpeed;
 
         currentBulletNum = bulletNumInBag[(int)weaponID];

@@ -6,8 +6,6 @@ public class AttackState : FSMState {
 
     public GameObject npc;
 
-
-
     public AttackState(GameObject npc)
     {
         this.npc = npc; 
@@ -33,4 +31,5 @@ public class AttackState : FSMState {
     {
         throw new System.NotImplementedException();
     }
+
 }

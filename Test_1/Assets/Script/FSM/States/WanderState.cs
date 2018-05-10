@@ -8,9 +8,10 @@ public class WanderState : FSMState {
     public GameObject[] wanderPoints;
     public GameObject npc;
     public GameObject wanderPoint;
+    public GameObject enemy;
 
     private NavMeshAgent Nma;                   //定义NMA
-    private float sightRange = 0;
+    private float sightRange = 6;
     private StateController controller;
 
     /// <summary>
@@ -43,9 +44,20 @@ public class WanderState : FSMState {
     public override Transition CheckTranstition()
     {
         Collider[] cols = Physics.OverlapSphere(npc.transform.position, sightRange, 1 << LayerMask.NameToLayer("AI"));
-        if (cols.Length != 0)
+        bool isOthers = false;
+        foreach (var item in cols)
         {
-            MoveToState moveToState_enemy = new MoveToState(npc, cols[0].gameObject);
+            if (item.gameObject != npc)
+            {
+                isOthers = true;
+                enemy = item.gameObject;
+                break;
+            }
+        }
+
+        if (cols.Length != 0 && isOthers)
+        {
+            MoveToState moveToState_enemy = new MoveToState(npc, enemy);
             moveToState_enemy.AddTransition(Transition.SawEnemy, StateID.MoveTo);
             controller.AddState(moveToState_enemy);
             return Transition.SawEnemy;

@@ -11,7 +11,6 @@ public enum Raven_Weapon
 
 public class Weapon : MonoBehaviour {
 
-    public float RateOfFire;                    //武器攻击范围
     public float ProjectileSpeed;               //武器射击速度
     public GameObject Bullet;                   //武器的子弹物件
     public Transform ShootPoint;
@@ -24,21 +23,18 @@ public class Weapon : MonoBehaviour {
     {
         if (weaponID == Raven_Weapon.Blaster)
         {
-            RateOfFire = 5;
             ProjectileSpeed = 10;
             Bullet = (GameObject)Resources.Load("Prefabs/BlasterBullet", typeof(GameObject));
             currentWeapon = Raven_Weapon.Blaster;
         }
         if (weaponID == Raven_Weapon.ShotGun)
         {
-            RateOfFire = 5;
             ProjectileSpeed = 30;
             Bullet = (GameObject)Resources.Load("Prefabs/ShotGunBullet", typeof(GameObject));
             currentWeapon = Raven_Weapon.ShotGun;
         }
         if (weaponID == Raven_Weapon.RocketLuncher)
         {
-            RateOfFire = 10;
             ProjectileSpeed = 45;
             Bullet = (GameObject)Resources.Load("Prefabs/RocketLuncherBullet", typeof(GameObject));
             currentWeapon = Raven_Weapon.RocketLuncher;
