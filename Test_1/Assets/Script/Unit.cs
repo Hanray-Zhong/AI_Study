@@ -16,14 +16,25 @@ public class Unit : MonoBehaviour {
     /// </summary>
     public Weapon weapon;
     public float ProjectileSpeed;
-    public float ShootCD = 0;
 
     public int[] bulletNumInBag;
     public int currentBulletNum;
     public Raven_Weapon currentWeapon;
 
+    private void Start()
+    {
+        /******************************************/
+        bulletNumInBag = new int[3];
+        bulletNumInBag[0] = -1;
+        bulletNumInBag[1] = 0;
+        bulletNumInBag[2] = 0;
+        /******************************************/
 
-    
+        weapon = gameObject.GetComponent<Weapon>();
+
+        ChangeWeapon(0);
+    }
+
 
     public void ApplyDamage(float damage)
     {
@@ -49,6 +60,17 @@ public class Unit : MonoBehaviour {
         Destroy(gameObject);
         Destroy(dead, 3);
         isDead = false;
+    }
+
+    public void ChangeWeapon(Raven_Weapon weaponID)
+    {
+        Weapon weapon = gameObject.GetComponent<Weapon>();
+        weapon.ChooseWeapon(weaponID);
+
+        ProjectileSpeed = weapon.ProjectileSpeed;
+
+        currentBulletNum = bulletNumInBag[(int)weaponID];
+        currentWeapon = weaponID;
     }
 
 }

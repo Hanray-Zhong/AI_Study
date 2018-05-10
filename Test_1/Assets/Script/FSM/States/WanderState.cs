@@ -11,7 +11,7 @@ public class WanderState : FSMState {
     public GameObject enemy;
 
     private NavMeshAgent Nma;                   //定义NMA
-    private float sightRange = 6;
+    private float sightRange = 10;
     private StateController controller;
 
     /// <summary>

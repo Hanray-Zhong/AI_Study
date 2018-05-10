@@ -10,6 +10,7 @@ public class MoveToState : FSMState {
 
     private Ray shootWay;
     private Vector3 shootDistinction;
+    private StateController controller;
 
 
 
@@ -27,6 +28,7 @@ public class MoveToState : FSMState {
         this.target = target;
 
         Nma = npc.GetComponent<NavMeshAgent>();
+        controller = npc.GetComponent<StateController>();
     }
 
     public override void DoBeforeEntering()
@@ -36,20 +38,20 @@ public class MoveToState : FSMState {
 
     public override void DoBeforeLeaving()
     {
-        
+        controller.DeleteState(StateID.MoveTo);
     }
 
     public override Transition CheckTranstition()
     {
-        //float distance = Vector3.Distance(target.transform.position, npc.transform.position);
+        float distance = Vector3.Distance(target.transform.position, npc.transform.position);
         
-        /*
+        
         if (target.layer == 1 << LayerMask.NameToLayer("AI"))
         {
             shootDistinction = target.transform.position - npc.transform.position;
             shootWay = new Ray(npc.transform.position, shootDistinction);
             RaycastHit hit;
-            if (distance <= 6 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
+            if (distance <= 10 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
             {
                 npc.transform.LookAt(target.transform.position);
                 return Transition.ReadyToAttack;
@@ -60,7 +62,7 @@ public class MoveToState : FSMState {
         {
             return Transition.LostEnemy;
         }
-        */
+        
 
         return Transition.NullTransition;
     }

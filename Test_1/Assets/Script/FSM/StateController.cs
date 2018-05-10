@@ -19,6 +19,7 @@ public class StateController : FSMSystem {
     private void FixedUpdate()
     {
         FSM.DoUpdate();
+        Debug.Log("Current State is: " + FSM.CurrentState);
     }
 
     /// <summary>
@@ -41,8 +42,6 @@ public class StateController : FSMSystem {
 
         WanderState wanderState = new WanderState(gameObject, wanderPoints);
         wanderState.AddTransition(Transition.LostEnemy, StateID.Wander);
-
-        Debug.Log(attackState + " " + wanderState);
 
         FSM.AddState(attackState);
         FSM.AddState(wanderState);

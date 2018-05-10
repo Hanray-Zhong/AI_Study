@@ -30,11 +30,16 @@ public enum StateID
 /// </summary>
 public abstract class FSMState {
 
-    protected Dictionary<Transition, StateID> map = new Dictionary<Transition, StateID>();
+    protected Dictionary<Transition, StateID> transitions;
 
     protected StateID stateID;
     public StateID ID { get { return stateID; } }
 
+
+    public FSMState()
+    {
+        transitions = new Dictionary<Transition, StateID>();
+    }
 
     /// <summary>
     /// 向字典中添加项，每一个转换(trans)对应一个状态(id)
@@ -43,15 +48,15 @@ public abstract class FSMState {
     /// <param name="id"></param>
     public void AddTransition(Transition trans, StateID id)
     {
-
         //检测是否已经在 Map 中
-        if (map.ContainsKey(trans))
+        if (transitions.ContainsKey(trans))
         {
-            Debug.LogError("FSMState ERROR: transition is already inside the map");
+            Debug.LogError("FSMState ERROR: " + trans + " is already inside the transitions");
             return;
         }
         else
-            map.Add(trans, id);
+            transitions.Add(trans, id);
+        Debug.Log("add transition " + trans + " successfully " + " " + transitions.ContainsKey(trans));
     }
 
     /// <summary>
@@ -61,9 +66,9 @@ public abstract class FSMState {
     public void DeleteTransition(Transition trans)
     {
         // 检查是否在字典中，如果在，移除
-        if (map.ContainsKey(trans))
+        if (transitions.ContainsKey(trans))
         {
-            map.Remove(trans);
+            transitions.Remove(trans);
             return;
         }
         //如果要删除的项不在字典中，报告错误
@@ -77,7 +82,7 @@ public abstract class FSMState {
     /// <returns></returns>
     public StateID GetNextState(Transition trans)
     {
-        return map[trans];
+        return transitions[trans];
     }
 
     /// <summary>

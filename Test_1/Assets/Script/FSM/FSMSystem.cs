@@ -12,6 +12,7 @@ public class FSMSystem : MonoBehaviour {
     /// </summary>
     private Dictionary<StateID, FSMState> states;
     // 只能通过 trans 参数来改变 state ，不能直接改变
+
     private StateID currentStateID;
     public StateID CurrentStateID { get { return currentStateID; } }
     private FSMState currentState;
@@ -37,12 +38,12 @@ public class FSMSystem : MonoBehaviour {
         //检测列表中是否存在
         if (states.ContainsKey(state.ID))
         {
-            Debug.LogError("FSM ADD ERROR: The state is exist");
+            Debug.LogError("FSM ADD ERROR: The " + state + " is exist");
             return;
         }
 
         states.Add(state.ID, state);
-        Debug.Log("add successfully");
+        Debug.Log("add state " + state + " successfully");
     }
 
     /// <summary>
