@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState : FSMState {
+
+    public GameObject npc;
+
+
+
+    public AttackState(GameObject npc)
+    {
+        this.npc = npc; 
+    }
+
+
     public override void DoBeforeEntering()
     {
         

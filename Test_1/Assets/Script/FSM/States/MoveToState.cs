@@ -8,6 +8,9 @@ public class MoveToState : FSMState {
     public GameObject target;
     public GameObject npc;
 
+    private Ray shootWay;
+    private Vector3 shootDistinction;
+
 
 
     private NavMeshAgent Nma;                   //定义NMA
@@ -38,6 +41,26 @@ public class MoveToState : FSMState {
 
     public override Transition CheckTranstition()
     {
+        float distance = Vector3.Distance(target.transform.position, npc.transform.position);
+        
+
+        if (target.layer == 1 << LayerMask.NameToLayer("AI"))
+        {
+            shootDistinction = target.transform.position - npc.transform.position;
+            shootWay = new Ray(npc.transform.position, shootDistinction);
+            RaycastHit hit;
+            if (distance <= 6 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
+            {
+                npc.transform.LookAt(target.transform.position);
+                return Transition.ReadyToAttack;
+            }
+        }
+
+        if (target == null)
+        {
+            return Transition.LostEnemy;
+        }
+
         return Transition.NullTransition;
     }
 

@@ -10,6 +10,8 @@ public class WanderState : FSMState {
     public GameObject wanderPoint;
 
     private NavMeshAgent Nma;                   //定义NMA
+    private float sightRange = 0;
+    private StateController controller;
 
     /// <summary>
     /// WanderStatte 构造方法
@@ -23,6 +25,7 @@ public class WanderState : FSMState {
         this.wanderPoints = wanderPoints;
 
         Nma = npc.GetComponent<NavMeshAgent>();
+        controller = npc.GetComponent<StateController>();
     }
 
 
@@ -39,6 +42,24 @@ public class WanderState : FSMState {
 
     public override Transition CheckTranstition()
     {
+        Collider[] cols = Physics.OverlapSphere(npc.transform.position, sightRange, 1 << LayerMask.NameToLayer("AI"));
+        if (cols.Length != 0)
+        {
+            MoveToState moveToState_enemy = new MoveToState(npc, cols[0].gameObject);
+            moveToState_enemy.AddTransition(Transition.SawEnemy, StateID.MoveTo);
+            controller.AddState(moveToState_enemy);
+            return Transition.SawEnemy;
+        }
+
+        Collider[] colsOfItem = Physics.OverlapSphere(npc.transform.position, sightRange, 1 << LayerMask.NameToLayer("Item"));
+        if (colsOfItem.Length != 0)
+        {
+            MoveToState moveToState_Item = new MoveToState(npc, colsOfItem[0].gameObject);
+            moveToState_Item.AddTransition(Transition.SawItem, StateID.MoveTo);
+            controller.AddState(moveToState_Item);
+            return Transition.SawItem;
+        }
+
         return Transition.NullTransition;
     }
 

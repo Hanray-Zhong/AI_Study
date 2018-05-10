@@ -28,7 +28,7 @@ public enum StateID
 /// <summary>
 /// 管理状态的类
 /// </summary>
-public abstract class FSMState : MonoBehaviour {
+public abstract class FSMState {
 
     protected Dictionary<Transition, StateID> map = new Dictionary<Transition, StateID>();
 
@@ -75,7 +75,7 @@ public abstract class FSMState : MonoBehaviour {
     /// </summary>
     /// <param name="trans"></param>
     /// <returns></returns>
-    public StateID GetOutputState(Transition trans)
+    public StateID GetNextState(Transition trans)
     {
         return map[trans];
     }
