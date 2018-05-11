@@ -11,7 +11,7 @@ public class WanderState : FSMState {
     public GameObject enemy;
 
     private NavMeshAgent Nma;                   //定义NMA
-    private float sightRange = 10;
+    private float sightRange = 15;
     private StateController controller;
 
     /// <summary>
@@ -57,25 +57,21 @@ public class WanderState : FSMState {
 
         if (cols.Length != 0 && isOthers)
         {
-            MoveToState moveToState_enemy = new MoveToState(npc, enemy);
-            moveToState_enemy.AddTransition(Transition.SawEnemy, StateID.MoveTo);
-            controller.AddState(moveToState_enemy);
+            controller.MoveTarget = enemy;
             return Transition.SawEnemy;
         }
 
         Collider[] colsOfItem = Physics.OverlapSphere(npc.transform.position, sightRange, 1 << LayerMask.NameToLayer("Item"));
         if (colsOfItem.Length != 0)
         {
-            MoveToState moveToState_Item = new MoveToState(npc, colsOfItem[0].gameObject);
-            moveToState_Item.AddTransition(Transition.SawItem, StateID.MoveTo);
-            controller.AddState(moveToState_Item);
+            controller.MoveTarget = colsOfItem[0].gameObject;
             return Transition.SawItem;
         }
 
         return Transition.NullTransition;
     }
 
-    public override void DoUpdate()
+    public override void DoUpdate(GameObject npc, GameObject target)
     {
         if(wanderPoint == null)
         {
@@ -89,5 +85,15 @@ public class WanderState : FSMState {
 
         if (distance < 3)
             wanderPoint = null;
+
+        Debug.Log("Lost enemy " + transitions.ContainsKey(Transition.LostEnemy));
+        Debug.Log("ReadyToAttack " + transitions.ContainsKey(Transition.ReadyToAttack));
+        Debug.Log("SawItem " + transitions.ContainsKey(Transition.SawItem));
+        Debug.Log("SawEnemy " + transitions.ContainsKey(Transition.SawEnemy));
+        foreach (var str in transitions)
+        {
+
+            Debug.Log(str);
+        }
     }
 }

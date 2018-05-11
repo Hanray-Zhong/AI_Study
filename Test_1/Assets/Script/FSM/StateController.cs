@@ -8,7 +8,7 @@ using UnityEngine;
 public class StateController : FSMSystem {
 
     public FSMSystem FSM;
-
+    public GameObject MoveTarget = null;
     public GameObject[] wanderPoints;
 
     private void Start()
@@ -16,10 +16,12 @@ public class StateController : FSMSystem {
         Init();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        FSM.DoUpdate();
+        FSM.DoUpdate(gameObject, MoveTarget);
         Debug.Log("Current State is: " + FSM.CurrentState);
+
+
     }
 
     /// <summary>
@@ -40,13 +42,19 @@ public class StateController : FSMSystem {
         AttackState attackState = new AttackState(gameObject);
         attackState.AddTransition(Transition.ReadyToAttack, StateID.Attack);
 
+        MoveToState moveToState = new MoveToState(gameObject, MoveTarget);
+        moveToState.AddTransition(Transition.SawEnemy, StateID.MoveTo);
+        moveToState.AddTransition(Transition.SawItem, StateID.MoveTo);
+
         WanderState wanderState = new WanderState(gameObject, wanderPoints);
         wanderState.AddTransition(Transition.LostEnemy, StateID.Wander);
 
+
         FSM.AddState(attackState);
         FSM.AddState(wanderState);
-        
+        FSM.AddState(moveToState);
 
-        FSM.start(StateID.Wander);
+
+        FSM.start(StateID.Attack);
     }
 }

@@ -31,10 +31,10 @@ public class AttackState : FSMState {
 
     public override Transition CheckTranstition()
     {
-        throw new System.NotImplementedException();
+        return Transition.NullTransition;
     }
 
-    public override void DoUpdate()
+    public override void DoUpdate(GameObject npc, GameObject target)
     {
         ShootCD++;
         if (ShootCD > npc_unit.ProjectileSpeed)

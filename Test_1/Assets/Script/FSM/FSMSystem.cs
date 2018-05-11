@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 维护一个状态的列表
+/// 维护一个状态的字典
 /// </summary>
 public class FSMSystem : MonoBehaviour {
     
@@ -98,7 +98,7 @@ public class FSMSystem : MonoBehaviour {
         // 更新现在的状态         
         currentStateID = id;
         FSMState fs;
-        if (states.TryGetValue(id, out fs))
+        if (states.TryGetValue(currentStateID, out fs))
         {
             currentState.DoBeforeLeaving();
             currentState = fs;
@@ -112,13 +112,13 @@ public class FSMSystem : MonoBehaviour {
     }
 
     /// <summary>
-    /// 由FSMSystem控制的 update() 要做的事
+    /// 由FSMSystem控制的 update() 检测状态是否需要转变
     /// </summary>
-    public void DoUpdate()
+    public void DoUpdate(GameObject npc, GameObject target)
     {
         Transition trans = currentState.CheckTranstition();
         if (trans != Transition.NullTransition)
             PerformTransition(trans);
-        currentState.DoUpdate();
+        currentState.DoUpdate(npc, target);
     }
 }

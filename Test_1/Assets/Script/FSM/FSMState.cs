@@ -55,8 +55,10 @@ public abstract class FSMState {
             return;
         }
         else
+        {
             transitions.Add(trans, id);
-        Debug.Log("add transition " + trans + " successfully " + " " + transitions.ContainsKey(trans));
+            Debug.Log("add transition " + trans + " successfully " + " " + transitions.ContainsKey(trans));
+        }
     }
 
     /// <summary>
@@ -104,5 +106,7 @@ public abstract class FSMState {
     /// <summary>
     /// 在 update 中这个状态要怎么做
     /// </summary>
-    public abstract void DoUpdate();
+    /// <param name="npc"></param>
+    /// <param name="target"></param>
+    public abstract void DoUpdate(GameObject npc, GameObject target);
 }

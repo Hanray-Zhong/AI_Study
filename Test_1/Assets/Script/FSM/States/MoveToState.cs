@@ -38,7 +38,7 @@ public class MoveToState : FSMState {
 
     public override void DoBeforeLeaving()
     {
-        controller.DeleteState(StateID.MoveTo);
+
     }
 
     public override Transition CheckTranstition()
@@ -51,7 +51,7 @@ public class MoveToState : FSMState {
             shootDistinction = target.transform.position - npc.transform.position;
             shootWay = new Ray(npc.transform.position, shootDistinction);
             RaycastHit hit;
-            if (distance <= 10 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
+            if (distance <= 13 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
             {
                 npc.transform.LookAt(target.transform.position);
                 return Transition.ReadyToAttack;
@@ -63,12 +63,12 @@ public class MoveToState : FSMState {
             return Transition.LostEnemy;
         }
         
-
         return Transition.NullTransition;
     }
 
-    public override void DoUpdate()
+    public override void DoUpdate(GameObject npc, GameObject target)
     {
+        this.target = target;
         Nma.SetDestination(target.transform.position);
     }
 }
