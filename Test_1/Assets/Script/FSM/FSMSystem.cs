@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 维护一个状态的字典
 /// </summary>
-public class FSMSystem : MonoBehaviour {
+public class FSMSystem {
     
     /// <summary>
     ///管理状态的字典 
@@ -43,7 +43,6 @@ public class FSMSystem : MonoBehaviour {
         }
 
         states.Add(state.ID, state);
-        Debug.Log("add state " + state + " successfully");
     }
 
     /// <summary>

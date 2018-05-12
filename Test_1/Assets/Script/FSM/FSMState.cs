@@ -57,7 +57,6 @@ public abstract class FSMState {
         else
         {
             transitions.Add(trans, id);
-            Debug.Log("add transition " + trans + " successfully " + " " + transitions.ContainsKey(trans));
         }
     }
 

@@ -9,7 +9,9 @@ public class Unit : MonoBehaviour {
     /// </summary>
 	public float health = 10;
     public GameObject DeadEffect;
+    public GameObject npc;
     private bool isDead = false;
+
 
     /// <summary>
     /// 武器属性
@@ -23,6 +25,7 @@ public class Unit : MonoBehaviour {
 
     private void Start()
     {
+        npc = gameObject;
         /******************************************/
         bulletNumInBag = new int[3];
         bulletNumInBag[0] = -1;

@@ -11,7 +11,7 @@ public class WanderState : FSMState {
     public GameObject enemy;
 
     private NavMeshAgent Nma;                   //定义NMA
-    private float sightRange = 15;
+    private float sightRange = 23;
     private StateController controller;
 
     /// <summary>
@@ -58,6 +58,7 @@ public class WanderState : FSMState {
         if (cols.Length != 0 && isOthers)
         {
             controller.MoveTarget = enemy;
+            wanderPoint = null;
             return Transition.SawEnemy;
         }
 
@@ -65,6 +66,7 @@ public class WanderState : FSMState {
         if (colsOfItem.Length != 0)
         {
             controller.MoveTarget = colsOfItem[0].gameObject;
+            wanderPoint = null;
             return Transition.SawItem;
         }
 
@@ -85,15 +87,5 @@ public class WanderState : FSMState {
 
         if (distance < 3)
             wanderPoint = null;
-
-        Debug.Log("Lost enemy " + transitions.ContainsKey(Transition.LostEnemy));
-        Debug.Log("ReadyToAttack " + transitions.ContainsKey(Transition.ReadyToAttack));
-        Debug.Log("SawItem " + transitions.ContainsKey(Transition.SawItem));
-        Debug.Log("SawEnemy " + transitions.ContainsKey(Transition.SawEnemy));
-        foreach (var str in transitions)
-        {
-
-            Debug.Log(str);
-        }
     }
 }

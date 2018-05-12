@@ -10,7 +10,10 @@ public class BlasterBullet : MonoBehaviour {
         Destroy(gameObject);
         Unit u = other.GetComponent<Unit>();
         if (u != null)
+        {
             u.ApplyDamage(damage);
+        }
+
         else
             return;
     }

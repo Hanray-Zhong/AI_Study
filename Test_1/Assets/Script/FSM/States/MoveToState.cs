@@ -12,9 +12,9 @@ public class MoveToState : FSMState {
     private Vector3 shootDistinction;
     private StateController controller;
 
+    private float distance = 0;
 
-
-    private NavMeshAgent Nma;                   //定义NMA
+    private NavMeshAgent Nma;
 
     /// <summary>
     /// MoveToState 构造方法
@@ -25,7 +25,6 @@ public class MoveToState : FSMState {
     {
         stateID = StateID.MoveTo;
         this.npc = npc;
-        this.target = target;
 
         Nma = npc.GetComponent<NavMeshAgent>();
         controller = npc.GetComponent<StateController>();
@@ -43,17 +42,22 @@ public class MoveToState : FSMState {
 
     public override Transition CheckTranstition()
     {
-        float distance = Vector3.Distance(target.transform.position, npc.transform.position);
-        
-        
-        if (target.layer == 1 << LayerMask.NameToLayer("AI"))
+        target = controller.MoveTarget;
+        if (target != null && target.layer == LayerMask.NameToLayer("AI"))
+        {
+            distance = Vector3.Distance(target.transform.position, npc.transform.position);
+        }
+
+
+        if (target != null && target.layer == LayerMask.NameToLayer("AI"))
         {
             shootDistinction = target.transform.position - npc.transform.position;
             shootWay = new Ray(npc.transform.position, shootDistinction);
             RaycastHit hit;
-            if (distance <= 13 || !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("wall")))
+
+            if (distance <= 20 && !Physics.Raycast(shootWay, out hit, distance, 1 << LayerMask.NameToLayer("Wall")))
             {
-                npc.transform.LookAt(target.transform.position);
+                Nma.ResetPath();
                 return Transition.ReadyToAttack;
             }
         }
@@ -68,7 +72,7 @@ public class MoveToState : FSMState {
 
     public override void DoUpdate(GameObject npc, GameObject target)
     {
-        this.target = target;
-        Nma.SetDestination(target.transform.position);
+        this.target = controller.MoveTarget;
+        Nma.SetDestination(this.target.transform.position);
     }
 }

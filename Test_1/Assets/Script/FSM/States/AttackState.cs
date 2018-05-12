@@ -9,13 +9,20 @@ public class AttackState : FSMState {
     public Unit npc_unit;
 
     private float ShootCD = 0;
+    private StateController controller;
 
+    /// <summary>
+    /// 攻击状态的构造方法
+    /// </summary>
+    /// <param name="npc"></param>
     public AttackState(GameObject npc)
     {
+        stateID = StateID.Attack;
         this.npc = npc;
 
         npc_weapon = npc.GetComponent<Weapon>();
         npc_unit = npc.GetComponent<Unit>();
+        controller = npc.GetComponent<StateController>();
     }
 
 
@@ -31,12 +38,17 @@ public class AttackState : FSMState {
 
     public override Transition CheckTranstition()
     {
+        if(controller.MoveTarget == null)
+        {
+            return Transition.LostEnemy;
+        }
         return Transition.NullTransition;
     }
 
     public override void DoUpdate(GameObject npc, GameObject target)
     {
         ShootCD++;
+        npc.transform.LookAt(target.transform.position);
         if (ShootCD > npc_unit.ProjectileSpeed)
         {
             if (npc_unit.currentBulletNum > 0)
@@ -46,6 +58,8 @@ public class AttackState : FSMState {
             npc_weapon.Shoot(npc_unit.currentWeapon);
             ShootCD = 0;
         }
+
+        
     }
 
 }

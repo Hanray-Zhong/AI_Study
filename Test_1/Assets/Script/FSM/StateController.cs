@@ -5,11 +5,12 @@ using UnityEngine;
 /// <summary>
 /// 状态机的控制器
 /// </summary>
-public class StateController : FSMSystem {
+public class StateController : MonoBehaviour {
 
     public FSMSystem FSM;
     public GameObject MoveTarget = null;
     public GameObject[] wanderPoints;
+
 
     private void Start()
     {
@@ -19,9 +20,6 @@ public class StateController : FSMSystem {
     private void Update()
     {
         FSM.DoUpdate(gameObject, MoveTarget);
-        Debug.Log("Current State is: " + FSM.CurrentState);
-
-
     }
 
     /// <summary>
@@ -40,21 +38,24 @@ public class StateController : FSMSystem {
         FSM = new FSMSystem();
 
         AttackState attackState = new AttackState(gameObject);
-        attackState.AddTransition(Transition.ReadyToAttack, StateID.Attack);
+        attackState.AddTransition(Transition.LostEnemy, StateID.Wander);
 
         MoveToState moveToState = new MoveToState(gameObject, MoveTarget);
-        moveToState.AddTransition(Transition.SawEnemy, StateID.MoveTo);
-        moveToState.AddTransition(Transition.SawItem, StateID.MoveTo);
+        moveToState.AddTransition(Transition.ReadyToAttack, StateID.Attack);
+        moveToState.AddTransition(Transition.LostEnemy, StateID.Wander);
 
         WanderState wanderState = new WanderState(gameObject, wanderPoints);
-        wanderState.AddTransition(Transition.LostEnemy, StateID.Wander);
+        wanderState.AddTransition(Transition.SawEnemy, StateID.MoveTo);
+        wanderState.AddTransition(Transition.SawItem, StateID.MoveTo);
+
 
 
         FSM.AddState(attackState);
         FSM.AddState(wanderState);
         FSM.AddState(moveToState);
 
+        
 
-        FSM.start(StateID.Attack);
+        FSM.start(StateID.Wander);
     }
 }
