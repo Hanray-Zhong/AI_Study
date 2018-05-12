@@ -509,17 +509,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveTarget: {fileID: 0}
   wanderPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1323288949139110, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1219994076537942, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1141247620310510, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1005254109469862, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1479400366108970, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1006487839537902, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1020923284602768, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1503251033314030, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1967499428452204, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1106715525875516, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1081382713709396, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
 --- !u!114 &114761146673114268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -533,7 +533,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   DeadEffect: {fileID: 151086, guid: ee49a9a8678ecf8468eb488e1ac8d42b, type: 2}
-  npc: {fileID: 0}
+  revivePoints:
+  - {fileID: 1447583699526932, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1651726489786360, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1243879551445742, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1963276073514292, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  - {fileID: 1994728386223256, guid: 86782e1a04b050c4f87e0d60bcc8d9f5, type: 2}
+  newRole: {fileID: 1279555002523290}
   weapon: {fileID: 0}
   ProjectileSpeed: 0
   bulletNumInBag: 

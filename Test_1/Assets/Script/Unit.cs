@@ -7,11 +7,13 @@ public class Unit : MonoBehaviour {
     /// <summary>
     /// 人物属性
     /// </summary>
-	public float health = 10;
+	public float health;
     public GameObject DeadEffect;
-    public GameObject npc;
-    private bool isDead = false;
+    public GameObject[] revivePoints;
+    public GameObject newRole;
 
+    private GameObject revivePoint;
+    private bool isDead = false;
 
     /// <summary>
     /// 武器属性
@@ -25,7 +27,7 @@ public class Unit : MonoBehaviour {
 
     private void Start()
     {
-        npc = gameObject;
+        health = 10;
         /******************************************/
         bulletNumInBag = new int[3];
         bulletNumInBag[0] = -1;
@@ -59,9 +61,24 @@ public class Unit : MonoBehaviour {
 
     private void Destruct()
     {
+        int revivePointNum = Random.Range(0, revivePoints.Length);
+        revivePoint = revivePoints[revivePointNum];
+        while (revivePoint.GetComponent<Reveive>().allow == false)
+        {
+            revivePointNum = Random.Range(0, revivePoints.Length);
+            revivePoint = revivePoints[revivePointNum];
+        }
+        
+        Instantiate(newRole, revivePoint.transform.position, revivePoint.transform.rotation);
+        revivePoint.GetComponent<Reveive>().allow = false;
+        Unit unit;
+        unit = newRole.GetComponent<Unit>();
+        unit.Start();
+
         GameObject dead = Instantiate(DeadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
         Destroy(dead, 3);
+
         isDead = false;
     }
 
