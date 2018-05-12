@@ -61,20 +61,6 @@ public class Unit : MonoBehaviour {
 
     private void Destruct()
     {
-        int revivePointNum = Random.Range(0, revivePoints.Length);
-        revivePoint = revivePoints[revivePointNum];
-        while (revivePoint.GetComponent<Reveive>().allow == false)
-        {
-            revivePointNum = Random.Range(0, revivePoints.Length);
-            revivePoint = revivePoints[revivePointNum];
-        }
-        
-        Instantiate(newRole, revivePoint.transform.position, revivePoint.transform.rotation);
-        revivePoint.GetComponent<Reveive>().allow = false;
-        Unit unit;
-        unit = newRole.GetComponent<Unit>();
-        unit.Start();
-
         GameObject dead = Instantiate(DeadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
         Destroy(dead, 3);

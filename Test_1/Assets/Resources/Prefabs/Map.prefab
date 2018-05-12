@@ -181,7 +181,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4207394630862628}
-  - component: {fileID: 114251711561234044}
   m_Layer: 0
   m_Name: RevivePoint (2)
   m_TagString: Untagged
@@ -231,7 +230,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4674844874353292}
-  - component: {fileID: 114151174605384324}
   m_Layer: 0
   m_Name: RevivePoint
   m_TagString: Untagged
@@ -353,7 +351,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4352871493753434}
-  - component: {fileID: 114719175253221702}
   m_Layer: 0
   m_Name: RevivePoint (1)
   m_TagString: Untagged
@@ -479,7 +476,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4362116199167674}
-  - component: {fileID: 114836542794630564}
   m_Layer: 0
   m_Name: RevivePoint (3)
   m_TagString: Untagged
@@ -529,7 +525,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4561653849418168}
-  - component: {fileID: 114502203387842638}
   m_Layer: 0
   m_Name: RevivePoint (4)
   m_TagString: Untagged
@@ -1978,63 +1973,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.15, y: 1.08, z: 1.0000002}
   m_Center: {x: 0.00000047683716, y: -0.00000023841858, z: 0}
---- !u!114 &114151174605384324
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447583699526932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d90b22b8264db438ce81f73eaa244c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allow: 1
---- !u!114 &114251711561234044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1243879551445742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d90b22b8264db438ce81f73eaa244c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allow: 1
---- !u!114 &114502203387842638
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994728386223256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d90b22b8264db438ce81f73eaa244c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allow: 1
---- !u!114 &114719175253221702
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651726489786360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d90b22b8264db438ce81f73eaa244c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allow: 1
---- !u!114 &114836542794630564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1963276073514292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d90b22b8264db438ce81f73eaa244c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allow: 1
