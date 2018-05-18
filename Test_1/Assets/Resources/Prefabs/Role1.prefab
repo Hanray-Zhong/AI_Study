@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4634188023516000}
   - component: {fileID: 33545551129285266}
   - component: {fileID: 23794855861221518}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PA_Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4319379091281724}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShootPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4089204302857062}
   - component: {fileID: 33025905395913226}
   - component: {fileID: 23338910529785606}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PA_DroneWingLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4790078933236344}
   - component: {fileID: 33503015611788618}
   - component: {fileID: 23502704791120262}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PA_DroneBladeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4786885747738120}
   - component: {fileID: 33207839589890316}
   - component: {fileID: 23428251572935838}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PA_DroneBladeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4893829932210140}
   - component: {fileID: 33964606688429866}
   - component: {fileID: 23499913777398208}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PA_DroneWingRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

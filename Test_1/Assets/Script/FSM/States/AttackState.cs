@@ -40,6 +40,7 @@ public class AttackState : FSMState {
     {
         if(controller.MoveTarget == null)
         {
+            npc_unit.ChangeWeapon(0);
             return Transition.LostEnemy;
         }
         return Transition.NullTransition;
