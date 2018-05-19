@@ -14,12 +14,15 @@ public class Item : MonoBehaviour {
 
     private void Update()
     {
-        CalmDown++;
+        if (ItemNum == 0)
+        {
+            CalmDown++;
+        }
 
         cols = Physics.OverlapSphere(gameObject.transform.position, 10000, 1 << LayerMask.NameToLayer("Item"));
         ItemNum = cols.Length;
 
-        if (ItemNum < 4 && CalmDown >= 200)
+        if (ItemNum < 1 && CalmDown >= 200)
         {
             int ItemPointNumber = Random.Range(0, ItemPoints.Length);
             int ItemNumber = Random.Range(0, newItems.Length);

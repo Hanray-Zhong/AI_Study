@@ -38,6 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4640739198887348}
   - component: {fileID: 114851569476709976}
+  - component: {fileID: 65877872273253724}
+  - component: {fileID: 114279424553731842}
   m_Layer: 0
   m_Name: ShotGunBulletBag
   m_TagString: Untagged
@@ -132,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639107352364638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.553696, y: 18.649996, z: 15.33273}
+  m_LocalPosition: {x: -16.867874, y: 44.15595, z: 12.078629}
   m_LocalScale: {x: 0.39525002, y: 0.9912, z: 0.39525002}
   m_Children:
   - {fileID: 4632396020647338}
@@ -332,6 +334,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585287026843552}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65877872273253724
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639107352364638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.14, y: 2.13, z: 4.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114279424553731842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639107352364638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a207710fcb791c24c8fd08317c80ae3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114851569476709976
 MonoBehaviour:
   m_ObjectHideFlags: 1

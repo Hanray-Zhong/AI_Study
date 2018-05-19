@@ -7,6 +7,7 @@ public class MoveToState : FSMState {
 
     public GameObject target;
     public GameObject npc;
+    public GameObject enemy;
 
     private Ray shootWay;
     private Vector3 shootDistinction;
@@ -43,6 +44,7 @@ public class MoveToState : FSMState {
     public override Transition CheckTranstition()
     {
         target = controller.MoveTarget;
+
         if (target != null && target.layer == LayerMask.NameToLayer("AI"))
         {
             distance = Vector3.Distance(target.transform.position, npc.transform.position);
@@ -59,6 +61,27 @@ public class MoveToState : FSMState {
             {
                 Nma.ResetPath();
                 return Transition.ReadyToAttack;
+            }
+        }
+
+        if (target != null && target.layer == LayerMask.NameToLayer("Item"))
+        {
+            Collider[] cols = Physics.OverlapSphere(npc.transform.position, 23, 1 << LayerMask.NameToLayer("AI"));
+            bool isOthers = false;
+            foreach (var item in cols)
+            {
+                if (item.gameObject != npc)
+                {
+                    isOthers = true;
+                    enemy = item.gameObject;
+                    break;
+                }
+            }
+
+            if (cols.Length != 0 && isOthers)
+            {
+                controller.MoveTarget = enemy;
+                return Transition.SawEnemy;
             }
         }
 

@@ -38,6 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4051396299293076}
   - component: {fileID: 114320665818777878}
+  - component: {fileID: 65518359415946010}
+  - component: {fileID: 114946086956744364}
   m_Layer: 0
   m_Name: RocketBulletBag
   m_TagString: Untagged
@@ -106,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209861159374648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.553696, y: 18.649996, z: 19.13}
+  m_LocalPosition: {x: -11.403861, y: 46.076496, z: 14.222147}
   m_LocalScale: {x: 0.39525002, y: 0.9912, z: 0.39525002}
   m_Children:
   - {fileID: 4269866897002090}
@@ -332,6 +334,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469279471691788}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65518359415946010
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209861159374648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.41, y: 2.07, z: 4.07}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114320665818777878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +355,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 542cf254112f4454ba399465a5de5794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114946086956744364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209861159374648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e072cd5fb65f8d146a4c53107cd12715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136549365437890432
